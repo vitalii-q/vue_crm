@@ -5,6 +5,13 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/test',
+    name: 'test',
+    meta: {layout: 'empty'},
+    component: () => import('../views/Test.vue')
+  },
+
+  {
     path: '/login',
     name: 'login',
     meta: {layout: 'empty'},

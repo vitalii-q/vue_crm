@@ -1,15 +1,23 @@
 <template>
-  <form class="card auth-card">
+  <form class="card auth-card" @submit.prevent="submitHandler">
     <div class="card-content">
       <span class="card-title">Домашняя бухгалтерия</span>
       <div class="input-field">
         <input
             id="email"
             type="text"
-            class="validate"
+            v-model.trim="email"
+            :class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email)}"
         >
         <label for="email">Email</label>
-        <small class="helper-text invalid">Email</small>
+        <small
+          class="helper-text invalid"
+          v-if="$v.email.$dirty && !$v.email.required"
+        >Поле Email должно быть заполнено</small>
+        <small
+            class="helper-text invalid"
+            v-else-if="$v.email.$dirty && !$v.email.email"
+        >Введите коректный Email</small>
       </div>
       <div class="input-field">
         <input
@@ -34,8 +42,39 @@
 
       <p class="center">
         Нет аккаунта?
-        <a href="/">Зарегистрироваться</a>
+        <a href="/register">Зарегистрироваться</a>
       </p>
     </div>
   </form>
 </template>
+
+<script>
+import {email, required, minLength} from "vuelidate/lib/validators";
+import useVuelidate from "@vuelidate/core";
+
+export default {
+  name: 'login',
+  data() {
+    return {
+      $v: useVuelidate(),
+      email: '',
+      password: '',
+    }
+  },
+  validations: {
+    email: {email, required},
+    password: {required, minLength: minLength(6)},
+  },
+  methods: {
+    submitHandler() {
+      console.log(this.$v)
+      //debugger
+      if(this.$v.$invalid) {
+        this.$v.$touch()
+        return
+      }
+      this.$router.push('/')
+    }
+  }
+}
+</script>
