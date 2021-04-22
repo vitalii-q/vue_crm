@@ -11,6 +11,7 @@
     "@vuelidate/core": "^2.0.0-alpha.15",
     "@vuelidate/validators": "^2.0.0-alpha.13",
     "core-js": "^3.6.5",
+    "firebase": "^8.4.1",
     "materialize-css": "^1.0.0-rc.2",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
