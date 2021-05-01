@@ -49,7 +49,6 @@ export default {
   },
   methods: {
       submitForm() {
-        console.log(this.$v)
         //this.$v.$validate() // checks all inputs
         debugger
         if (!this.$v.$error) { // if ANY fail validation

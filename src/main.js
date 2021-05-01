@@ -6,7 +6,9 @@ import router from './router'
 import store from './store'
 
 import dateFilter from "./filters/date.filter"; // фильтр даты
+import currencyFilter from "./filters/currency.filter"; // фильтр валюты
 import MessagePlugin from '@/utils/message.plugin'
+import Loader from "@/components/app/Loader";
 
 import 'materialize-css/dist/js/materialize.min'
 
@@ -19,6 +21,8 @@ Vue.config.productionTip = false
 Vue.use(MessagePlugin)
 Vue.use(Vuelidate)
 Vue.filter('date', dateFilter)
+Vue.filter('currency', currencyFilter)
+Vue.component('Loader', Loader)
 
 firebase.initializeApp({
   apiKey: "AIzaSyDrmwNq95WzrLWA5RS92fno4dbkLwbokYM",
