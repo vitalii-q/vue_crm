@@ -28,6 +28,11 @@ import HomeCurrency from '@/components/HomeCurrency'
 
 export default {
   name: 'home',
+  metaInfo() {
+    return {
+      title: this.$title('Menu_Bill')
+    }
+  },
   data: () => ({ // хранимые данные
     loading: true, // по умолчанию true
     currency: null // по умолчанию null

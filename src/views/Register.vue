@@ -90,6 +90,11 @@ import {register} from "register-service-worker";
 
 export default {
   name: 'register',
+  metaInfo() {
+    return {
+      title: this.$title('Register')
+    }
+  },
   data() {
     return {
       email: '',

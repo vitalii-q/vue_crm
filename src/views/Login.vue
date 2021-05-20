@@ -69,6 +69,11 @@ import firebase from "firebase";
 
 export default {
   name: 'login',
+  metaInfo() {
+    return {
+      title: this.$title('Login')
+    }
+  },
   data() {
     return {
       $v: useVuelidate(),
